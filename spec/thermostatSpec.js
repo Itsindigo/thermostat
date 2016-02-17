@@ -40,12 +40,12 @@ describe("Thermostat", function() {
   it("Should raise error at 33 temp if powersave off", function(){
     thermo.powerSaveOff()
     thermo.temperature = 32;
-    expect(function () {thermo.up();}).toThrow(new Error ('Max temperature reached'));
+    expect(function () {thermo.up();}).toThrowError('Max temperature reached');
   });
 
   it("Should raise error at 26 temp if powersave on",function(){
     thermo.temperature = 25;
-    expect(function () {thermo.up();}).toThrow(new Error ('Max temperature reached'));
+    expect(function () {thermo.up();}).toThrowError('Max temperature reached');
   });
 
   it("Should return to 20 degrees when reset is pushed", function(){
@@ -54,23 +54,26 @@ describe("Thermostat", function() {
     expect(thermo.temperature).toEqual(20);
   });
 
-  it("Should change the display colour to green below 18 degrees", function() {
+  it("Should change the energy usage to low below 18 degrees", function() {
     thermo.temperature = 17;
-    thermo.isColour()
-    expect(thermo.displayColour).toBe('green')
+    expect(thermo.energyUsage()).toBe('low-usage')
   });
 
-  it("Should change the display colour to yellow between 18 - 24 degrees", function() {
+  it("Should change the energy usage to medium between 18 - 24 degrees", function() {
     thermo.temperature = 23;
-    thermo.isColour()
-    expect(thermo.displayColour).toBe('yellow');
+    expect(thermo.energyUsage()).toBe('medium-usage');
   });
 
-  it("Should change the display colour to red above 25 degrees", function() {
+  it("Should change the energy usage to high above 25 degrees", function() {
     thermo.powerSaveOff();
     thermo.temperature = 28;
-    thermo.isColour()
-    expect(thermo.displayColour).toBe('red');
+    expect(thermo.energyUsage()).toBe('high-usage');
   });
 
+  it("Should reset the temperature to 25 if powersave switched off while above 25.", function(){
+    thermo.powerSaveOff()
+    thermo.temperature = 30;
+    thermo.powerSaveOn()
+    expect(thermo.temperature).toEqual(25);
+  });
 });

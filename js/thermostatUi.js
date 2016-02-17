@@ -4,7 +4,16 @@ $(document).ready(function() {
 
 
   $bgcolour = function() {
-    $("body").css('background-color', thermoMonkey.displayColour)
+      if(thermoMonkey.energyUsage() === "high-usage"){
+        var colour = '#B0171F'
+        $("body").css('background-color', '#B0171F');
+    } else if(thermoMonkey.energyUsage() === "medium-usage"){
+        $("body").css('background-color', '#FFF68F');
+      else if(thermoMonkey.energyUsage() === "low-usage"){
+        $("body").css('background-color', '#79CDCD');
+      else
+        "whatever";
+    };
   };
 
   $bgcolour();
@@ -32,6 +41,7 @@ $(document).ready(function() {
   $("#pson").click(function() {
     thermoMonkey.powerSaveOn()
     $("#ps-status").text(thermoMonkey.powerSavingMode)
+    $("#temperature").text(thermoMonkey.temperature)
   });
 
   $("#psoff").click(function() {
