@@ -1,0 +1,56 @@
+#main {
+  font-family:"Futura";
+}
+
+#box {
+  text-align: center;
+  border-radius:25px;
+  padding:20px;
+  background:rgba(255,255,255, 0.5);
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin: 0 auto;
+  padding:15px;
+  -ms-transform: translateX(-50%)translateY(-80%);
+  -webkit-transform: translate(-50%,-80%);
+  transform: translate(-50%,-80%);
+  width:600px;
+}
+
+
+.progressbar {
+   width: 25px;
+   height: 215px;
+   position: relative;
+   background: transparent url(http://i48.tinypic.com/290tvnk.png) no-repeat;
+}
+.progressbar-value {
+   position: absolute;
+   display: block;
+   margin: 0;
+   border: 0;
+   width: 15px;
+   height: 200px;
+   top: 7px;
+   left: 5px;
+   overflow: hidden;
+   text-indent: -30px;
+   background: #0f0 url(http://i45.tinypic.com/minc5g.png) center center;
+}
+.progressbar-cover {
+   position: absolute;
+   display: block;
+   width: 15px;
+   height: 200px;
+   border: 0;
+   left: 0;
+   bottom: 0%;
+   background: transparent url(http://i49.tinypic.com/1zwge3s.png) repeat-x 0 0;
+}
+
+body {
+    background-image:url("https://upload.wikimedia.org/wikipedia/commons/a/a9/Polarlicht.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+}
